@@ -32,8 +32,9 @@ public class ToDoController{
     }    
 
     @PutMapping("/todos")
-    public void persistToDo(@RequestBody ToDo toDo){
+    public List<ToDo> persistToDo(@RequestBody ToDo toDo){
         toDoRepository.save(toDo);
+        return toDoRepository.findAll();
     }
 
 }
