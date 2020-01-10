@@ -16,7 +16,7 @@ public class ToDo {
 	private String task;
 	
 	@Column(name="IS_COMPLETE")
-    private boolean isComplete;
+    private String isComplete;
         
     public Integer getId() {
         return id;
@@ -34,11 +34,12 @@ public class ToDo {
         this.task = task;
     }
 
-    public boolean isComplete() {
+    public String getIsComplete() {
         return isComplete;
     }
 
-    public void setComplete(boolean isComplete) {
+    public void setIsComplete(String isComplete) {
         this.isComplete = isComplete;
     }
+
 }
