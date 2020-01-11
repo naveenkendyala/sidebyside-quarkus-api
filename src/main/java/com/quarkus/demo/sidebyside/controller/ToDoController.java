@@ -23,8 +23,8 @@ public class ToDoController{
     @Autowired
     ToDoRepository toDoRepository;
 
-    @Inject
-    AgroalDataSource dataSource;
+    // @Inject
+    // AgroalDataSource dataSource;
 
     @GetMapping(value="/todos")
     public List<ToDo> getAllTodos() {
