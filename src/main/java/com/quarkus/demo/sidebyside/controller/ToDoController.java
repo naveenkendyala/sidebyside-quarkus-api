@@ -2,11 +2,11 @@ package com.quarkus.demo.sidebyside.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-//import io.agroal.api.AgroalDataSource;
+import io.agroal.api.AgroalDataSource;
 
 import java.util.List;
 
-//import javax.inject.Inject;
+import javax.inject.Inject;
 
 import com.quarkus.demo.sidebyside.entity.ToDo;
 import com.quarkus.demo.sidebyside.repository.ToDoRepository;
@@ -23,8 +23,8 @@ public class ToDoController{
     @Autowired
     ToDoRepository toDoRepository;
 
-    // @Inject
-    // AgroalDataSource dataSource;
+    @Inject
+    AgroalDataSource dataSource;
 
     @GetMapping(value="/todos")
     public List<ToDo> getAllTodos() {

@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.quarkus.demo.sidebyside</groupId>
   <artifactId>sidebyside-quarkus-api</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1-SNAPSHOT</version> 
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <java.version>1.8</java.version>

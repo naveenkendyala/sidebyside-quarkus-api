@@ -7,7 +7,7 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.jvm -t quarkus/sidebyside-quarkus-api-jvm .
+# docker build -f src/main/docker/jvm.dockerfile -t quarkus/sidebyside-quarkus-api-jvm .
 #
 # Then run the container using:
 #
@@ -26,7 +26,7 @@ RUN adduser -G root --no-create-home --disabled-password 1001 \
 
 COPY target/lib/* /deployments/lib/
 COPY target/*-runner.jar /deployments/app.jar
-EXPOSE 8080
+EXPOSE 8090
 
 # run with user 1001
 USER 1001
