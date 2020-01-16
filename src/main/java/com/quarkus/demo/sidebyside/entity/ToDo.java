@@ -4,8 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+
+
 @Entity
-public class ToDo {
+public class ToDo extends PanacheEntityBase{
 
 	//Use @GeneratedValue for automatically generating the Id
 	@Id

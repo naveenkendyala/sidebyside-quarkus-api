@@ -1,40 +1,35 @@
 package com.quarkus.demo.sidebyside.controller;
 
-import org.springframework.web.bind.annotation.RestController;
-
 import io.agroal.api.AgroalDataSource;
-
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import com.quarkus.demo.sidebyside.entity.ToDo;
-import com.quarkus.demo.sidebyside.repository.ToDoRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+@Path("todos")
+@ApplicationScoped
+public class ToDoController {
 
+	@Inject
+	AgroalDataSource dataSource;
 
-@RestController
-public class ToDoController{
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<ToDo> getAllTodos() {
+		return ToDo.listAll();
+	}
 
-    @Autowired
-    ToDoRepository toDoRepository;
+	@PUT
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<ToDo> persistTodo() {
+		return ToDo.listAll();
+	}
 
-    @Inject
-    AgroalDataSource dataSource;
-
-    @GetMapping(value="/todos")
-    public List<ToDo> getAllTodos() {
-        return toDoRepository.findAll();
-    }    
-
-    @PutMapping("/todos")
-    public List<ToDo> persistToDo(@RequestBody ToDo toDo){
-        toDoRepository.save(toDo);
-        return toDoRepository.findAll();
-    }
-        
 }
