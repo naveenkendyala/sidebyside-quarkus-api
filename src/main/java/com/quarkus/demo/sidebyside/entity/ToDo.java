@@ -3,12 +3,11 @@ package com.quarkus.demo.sidebyside.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-
+import javax.persistence.Table;
 
 @Entity
-public class ToDo extends PanacheEntityBase{
+@Table(name="ToDo")
+public class ToDo {
 
 	//Use @GeneratedValue for automatically generating the Id
 	@Id
@@ -19,30 +18,39 @@ public class ToDo extends PanacheEntityBase{
 	private String task;
 	
 	@Column(name="IS_COMPLETE")
-    private String isComplete;
-        
-    public Integer getId() {
-        return id;
-    }
+	private String isComplete;
+	
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	/**
+	 * @return the task
+	 */
+	public String getTask() {
+		return task;
+	}
+	/**
+	 * @param task the task to set
+	 */
+	public void setTask(String task) {
+		this.task = task;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public String getIsComplete() {
+		return isComplete;
+	}
 
-    public String getTask() {
-        return task;
-    }
-
-    public void setTask(String task) {
-        this.task = task;
-    }
-
-    public String getIsComplete() {
-        return isComplete;
-    }
-
-    public void setIsComplete(String isComplete) {
-        this.isComplete = isComplete;
-    }
+	public void setIsComplete(String isComplete) {
+		this.isComplete = isComplete;
+	}
 
 }

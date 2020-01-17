@@ -1,35 +1,41 @@
 package com.quarkus.demo.sidebyside.controller;
 
-import io.agroal.api.AgroalDataSource;
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.quarkus.demo.sidebyside.entity.ToDo;
+import com.quarkus.demo.sidebyside.repository.ToDoRepository;
 
-@Path("todos")
-@ApplicationScoped
+@RestController
 public class ToDoController {
 
-	@Inject
-	AgroalDataSource dataSource;
+	@Autowired
+	private ToDoRepository todoRepository;	
+	
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<ToDo> getAllTodos() {
-		return ToDo.listAll();
+	@GetMapping("/todos")
+	public List<ToDo> getAllToDos() {
+		return todoRepository.findAll();
 	}
 
-	@PUT
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<ToDo> persistTodo() {
-		return ToDo.listAll();
+	@PutMapping("/todos")
+	public List<ToDo> addToDo(@RequestBody ToDo todo) {
+
+		todoRepository.save(todo);
+		return todoRepository.findAll();
 	}
+	
+//Using CrudRepository	
+//	@GetMapping("/todos")
+//	public List<ToDo> getAllToDos() {
+//		List<ToDo> todos = new ArrayList<ToDo>();
+//		todoRepository.findAll().forEach(todos::add);
+//		return todos;
+//	}
 
 }
