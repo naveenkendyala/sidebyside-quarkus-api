@@ -16,20 +16,20 @@ spec:
         name: quarkus-jpa-api-jvm
     spec:
       containers:
-      - image: naveenkendyala/quarkus-jpa-api-jvm:0.0.16
+      - image: naveenkendyala/quarkus-jpa-api-jvm:0.0.22
         name: quarkus-jpa-api-jvm
+        ports:
+        - containerPort: 8090
         envFrom:
         - configMapRef:
             name: quarkus-jpa-api-jvm-cm
         - secretRef:
-            name: quarkus-jpa-api-jvm-secret        
-        ports:
-        - containerPort: 8090
+            name: quarkus-jpa-api-jvm-secret
         resources:
           limits:
-            cpu: 100m
-            memory: 150Mi
+            cpu: "50m"
+            memory: "200Mi"
           requests:
-            cpu: 100m
-            memory: 150Mi
+            cpu: "50m"
+            memory: "200Mi"
 status: {}
