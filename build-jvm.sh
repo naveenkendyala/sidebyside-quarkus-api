@@ -1,5 +1,5 @@
 #/bin/bash
-./mvnw clean package
+./mvnw clean package -Dquarkus.profile=jvm
 
 echo "*****************************************************************************"
 docker build -f src/main/build/docker/jvm.dockerfile -t quarkus/quarkus-jpa-api-jvm:$1 .; 

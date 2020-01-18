@@ -1,4 +1,4 @@
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: quarkus-jpa-api-jvm-hpa
@@ -9,10 +9,4 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: quarkus-jpa-api-jvm-deploy
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 50
+  targetCPUUtilizationPercentage: 50

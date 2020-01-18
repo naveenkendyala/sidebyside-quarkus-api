@@ -16,20 +16,33 @@ spec:
         name: quarkus-jpa-api-native
     spec:
       containers:
-      - image: naveenkendyala/quarkus-jpa-api-native:0.0.9 
+      - image: naveenkendyala/quarkus-jpa-api-native:0.0.31
         name: quarkus-jpa-api-native
         envFrom:
         - configMapRef:
             name: quarkus-jpa-api-native-cm
         - secretRef:
-            name: quarkus-jpa-api-native-secret        
+            name: quarkus-jpa-api-native-secret
         ports:
         - containerPort: 8090
         resources:
-          limits:
-            cpu: 100m
-            memory: 150Mi
           requests:
-            cpu: 100m
-            memory: 150Mi
+            memory: "100Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "300m"
+        livenessProbe:
+          httpGet:
+              port: 8090
+              path: /applive
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 2          
+        readinessProbe:
+          httpGet:
+            path: /appready
+            port: 8090
+          initialDelaySeconds: 5
+          periodSeconds: 10
 status: {}
