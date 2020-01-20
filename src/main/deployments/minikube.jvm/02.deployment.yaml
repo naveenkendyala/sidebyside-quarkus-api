@@ -16,7 +16,7 @@ spec:
         name: quarkus-jpa-api-jvm
     spec:
       containers:
-      - image: naveenkendyala/quarkus-jpa-api-jvm:0.0.50
+      - image: naveenkendyala/quarkus-jpa-api-jvm:1.0.0
         name: quarkus-jpa-api-jvm
         ports:
         - containerPort: 8090
@@ -36,13 +36,13 @@ spec:
           httpGet:
               port: 8090
               path: /applive
-          initialDelaySeconds: 5
+          initialDelaySeconds: 12
           periodSeconds: 10
-          timeoutSeconds: 2          
+          timeoutSeconds: 2    
         readinessProbe:
           httpGet:
             path: /appready
             port: 8090
-          initialDelaySeconds: 5
+          initialDelaySeconds: 10
           periodSeconds: 10
 status: {}
