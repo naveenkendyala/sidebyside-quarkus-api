@@ -3,7 +3,7 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: quarkus-jpa-api-jvm-hpa
 spec:
-  maxReplicas: 10
+  maxReplicas: 15
   minReplicas: 2
   scaleTargetRef:
     apiVersion: apps/v1
