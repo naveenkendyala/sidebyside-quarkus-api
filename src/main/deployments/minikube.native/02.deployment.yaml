@@ -38,7 +38,7 @@ spec:
               path: /applive
           initialDelaySeconds: 5
           periodSeconds: 10
-          timeoutSeconds: 2          
+          timeoutSeconds: 2
         readinessProbe:
           httpGet:
             path: /appready

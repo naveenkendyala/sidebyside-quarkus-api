@@ -38,11 +38,11 @@ spec:
               path: /applive
           initialDelaySeconds: 12
           periodSeconds: 10
-          timeoutSeconds: 5
+          timeoutSeconds: 10
         readinessProbe:
           httpGet:
             path: /appready
             port: 8090
-          initialDelaySeconds: 12
+          initialDelaySeconds: 10
           periodSeconds: 10
 status: {}

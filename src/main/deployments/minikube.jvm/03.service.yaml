@@ -8,7 +8,7 @@ metadata:
 spec:
   ports:
   - port: 8090
-    nodePort: 30201
+    nodePort: 30202
     protocol: TCP
     targetPort: 8090
   selector:
