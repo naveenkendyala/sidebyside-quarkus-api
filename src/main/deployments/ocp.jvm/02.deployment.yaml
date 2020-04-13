@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: quarkus-jpa-api-jvm
+  name: quarkus-jpa-api-jvm-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: quarkus-jpa-api-jvm
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        name: quarkus-jpa-api-jvm
+    spec:
+      containers:
+      - image: naveenkendyala/quarkus-jpa-api-jvm:1.0.0
+        name: quarkus-jpa-api-jvm
+        ports:
+        - containerPort: 8090
+        envFrom:
+        - configMapRef:
+            name: quarkus-jpa-api-jvm-cm
+        - secretRef:
+            name: quarkus-jpa-api-jvm-secret
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "175Mi"
+            cpu: "300m"
+        livenessProbe:
+          httpGet:
+              port: 8090
+              path: /applive
+          initialDelaySeconds: 12
+          periodSeconds: 10
+          timeoutSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /appready
+            port: 8090
+          initialDelaySeconds: 10
+          periodSeconds: 10
+status: {}
